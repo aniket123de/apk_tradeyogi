@@ -18,6 +18,10 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
+html {
+    font-size: 16px;
+}
+
 body {
     background-color: var(--background);
     display: flex;
@@ -29,24 +33,25 @@ body {
     background: linear-gradient(135deg, rgba(245, 247, 249, 0.97), rgba(245, 247, 249, 0.93)),
                 url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0L100 50L50 100L0 50Z' fill='%233B8C7C' fill-opacity='0.03'/%3E%3C/svg%3E");
     background-size: 100px 100px;
+    padding: 1rem;
 }
 
 .container {
     text-align: center;
-    padding: 3rem;
+    padding: clamp(1.5rem, 5vw, 3rem);
     background-color: var(--card-bg);
     border-radius: 1.5rem;
     box-shadow: var(--shadow);
     max-width: 1000px;
-    width: 90%;
+    width: 100%;
     animation: fadeIn 0.5s ease-out;
     position: relative;
     overflow: hidden;
 }
 
 .logo {
-    width: 180px;
-    height: 180px;
+    width: clamp(120px, 25vw, 180px);
+    height: clamp(120px, 25vw, 180px);
     margin: 0 auto 2rem;
     animation: floatAnimation 6s ease-in-out infinite;
 }
@@ -58,37 +63,39 @@ body {
 }
 
 h1 {
-    font-size: 2.8rem;
-    margin-bottom: 1rem;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
     font-weight: 700;
     color: var(--primary-color);
 }
 
 .tagline {
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
     color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+    margin-bottom: clamp(1rem, 3vw, 1.5rem);
     font-weight: 500;
 }
 
 .description {
     max-width: 700px;
-    margin: 0 auto 3rem;
+    margin: 0 auto clamp(2rem, 5vw, 3rem);
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
     line-height: 1.6;
+    padding: 0 clamp(0.5rem, 2vw, 1rem);
 }
 
 .features {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin: 2rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(1rem, 3vw, 2rem);
+    margin: clamp(1.5rem, 4vw, 2rem) 0;
+    padding: 0 clamp(0.5rem, 2vw, 1rem);
 }
 
 .feature {
     background: var(--white);
-    padding: 2rem;
+    padding: clamp(1.5rem, 4vw, 2rem);
     border-radius: 1rem;
     text-align: left;
     border: 1px solid rgba(59, 140, 124, 0.1);
@@ -97,8 +104,8 @@ h1 {
 
 .feature h3 {
     color: var(--primary-color);
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    font-size: clamp(1.1rem, 2.5vw, 1.2rem);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -108,12 +115,12 @@ h1 {
     background: var(--gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 1.4rem;
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
 }
 
 .feature p {
     color: var(--text-secondary);
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1rem);
     line-height: 1.6;
     margin: 0;
 }
@@ -122,16 +129,17 @@ h1 {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 1rem 2.5rem;
+    padding: clamp(0.8rem, 2.5vw, 1rem) clamp(1.5rem, 4vw, 2.5rem);
     background: var(--gradient);
     color: var(--white);
     text-decoration: none;
     border-radius: 0.8rem;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(59, 140, 124, 0.2);
-    margin-top: 2rem;
+    margin-top: clamp(1.5rem, 4vw, 2rem);
+    white-space: nowrap;
 }
 
 .download-btn:hover {
@@ -140,12 +148,14 @@ h1 {
 }
 
 .download-info {
-    margin-top: 2rem;
-    font-size: 0.95rem;
+    margin-top: clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
     color: var(--text-secondary);
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
+    gap: clamp(0.8rem, 2vw, 2rem);
+    padding: 0 clamp(0.5rem, 2vw, 1rem);
 }
 
 .download-info span {
@@ -174,26 +184,76 @@ h1 {
     }
 }
 
+/* Mobile and Tablet Optimizations */
 @media (max-width: 768px) {
-    .container {
-        padding: 2rem;
+    body {
+        padding: 0.5rem;
     }
-    
+
+    .container {
+        border-radius: 1rem;
+    }
+
     .features {
         grid-template-columns: 1fr;
     }
-    
-    h1 {
-        font-size: 2.2rem;
-    }
-    
-    .logo {
-        width: 140px;
-        height: 140px;
-    }
-    
+
     .download-info {
         flex-direction: column;
-        gap: 1rem;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* Small Mobile Optimizations */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 1.5rem 1rem;
+    }
+
+    .feature {
+        padding: 1.25rem;
+    }
+
+    .download-btn {
+        width: 90%;
+        justify-content: center;
+    }
+
+    .logo {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Landscape Mode Optimization */
+@media (max-height: 600px) and (orientation: landscape) {
+    body {
+        padding: 1rem;
+    }
+
+    .container {
+        padding: 1.5rem;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 1rem;
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* High-DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 } 
